@@ -1,2 +1,2 @@
 # memory-management
-Memory allocation algorithms in S.O
+Memory allocation algorithms in O.S
