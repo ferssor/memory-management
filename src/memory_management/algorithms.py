@@ -2,6 +2,7 @@ from tabulate import tabulate
 
 
 def worst_fit(blockSize: int, blockLenth: int, processSize: int, processLength: int):
+    print(blockSize)
     allocation = [-1] * processLength
 
     for i in range(processLength):
@@ -17,11 +18,13 @@ def worst_fit(blockSize: int, blockLenth: int, processSize: int, processLength: 
             allocation[i] = worstId
             blockSize[worstId] -= processSize[i]
 
-    print("Worst fit")
+    print("Worst-fit")
+    print(blockSize)
     final_allocation(processLength, processSize, allocation)
 
 
 def first_fit(blockSize: int, blockLength: int, processSize: int, processLength: int):
+    print(blockSize)
     allocation = [-1] * processLength
 
     for i in range(processLength):
@@ -32,11 +35,13 @@ def first_fit(blockSize: int, blockLength: int, processSize: int, processLength:
 
                 break
 
-    print("First fit")
+    print("First-fit")
+    print(blockSize)
     final_allocation(processLength, processSize, allocation)
 
 
 def best_fit(blockSize: int, blockLength: int, processSize: int, processLength: int):
+    print(blockSize)
     allocation = [-1] * processLength
 
     for i in range(processLength):
@@ -53,7 +58,8 @@ def best_fit(blockSize: int, blockLength: int, processSize: int, processLength: 
             allocation[i] = bestId
             blockSize[bestId] -= processSize[i]
 
-    print("Best fit")
+    print("Best-fit")
+    print(blockSize)
     final_allocation(processLength, processSize, allocation)
 
 
