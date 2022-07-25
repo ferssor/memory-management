@@ -1,8 +1,8 @@
 from tabulate import tabulate
+from data import data
 
 
 def worst_fit(blockSize: int, blockLenth: int, processSize: int, processLength: int):
-    print(blockSize)
     allocation = [-1] * processLength
 
     for i in range(processLength):
@@ -19,12 +19,11 @@ def worst_fit(blockSize: int, blockLenth: int, processSize: int, processLength: 
             blockSize[worstId] -= processSize[i]
 
     print("Worst-fit")
-    print(blockSize)
     final_allocation(processLength, processSize, allocation)
+    memory(blockSize)
 
 
 def first_fit(blockSize: int, blockLength: int, processSize: int, processLength: int):
-    print(blockSize)
     allocation = [-1] * processLength
 
     for i in range(processLength):
@@ -36,12 +35,11 @@ def first_fit(blockSize: int, blockLength: int, processSize: int, processLength:
                 break
 
     print("First-fit")
-    print(blockSize)
     final_allocation(processLength, processSize, allocation)
+    memory(blockSize)
 
 
 def best_fit(blockSize: int, blockLength: int, processSize: int, processLength: int):
-    print(blockSize)
     allocation = [-1] * processLength
 
     for i in range(processLength):
@@ -59,8 +57,8 @@ def best_fit(blockSize: int, blockLength: int, processSize: int, processLength: 
             blockSize[bestId] -= processSize[i]
 
     print("Best-fit")
-    print(blockSize)
     final_allocation(processLength, processSize, allocation)
+    memory(blockSize)
 
 
 def final_allocation(processLength: int, processSize: int, allocation: int):
@@ -82,4 +80,17 @@ def final_allocation(processLength: int, processSize: int, allocation: int):
         table = {"Process no.": index, "Process Size": process, "Block no.": result}
 
     headers = ["Process no.", "Process Size", "Block no."]
+    return print(tabulate(table, headers=headers, tablefmt="grid", stralign="center"))
+
+
+def memory(block):
+    sub = []
+    for i in range(len(data())):
+        sub.append(data()[i] - block[i])
+    table = {
+        "Initial memory": data(),
+        "Current memory": block,
+        "Diff": sub,
+    }
+    headers = ["Initial memory", "Current memory", "Diff"]
     return print(tabulate(table, headers=headers, tablefmt="grid", stralign="center"))
