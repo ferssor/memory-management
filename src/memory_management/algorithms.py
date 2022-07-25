@@ -79,8 +79,11 @@ def final_allocation(processLength: int, processSize: int, allocation: int):
 
         table = {"Process no.": index, "Process Size": process, "Block no.": result}
 
-    headers = ["Process no.", "Process Size", "Block no."]
-    return print(tabulate(table, headers=headers, tablefmt="grid", stralign="center"))
+    return print(
+        tabulate(
+            table, headers="keys", tablefmt="grid", stralign="center", numalign="center"
+        )
+    )
 
 
 def memory(block):
@@ -92,5 +95,9 @@ def memory(block):
         "Current memory": block,
         "Diff": sub,
     }
-    headers = ["Initial memory", "Current memory", "Diff"]
-    return print(tabulate(table, headers=headers, tablefmt="grid", stralign="center"))
+
+    return print(
+        tabulate(
+            table, headers="keys", tablefmt="grid", stralign="center", numalign="center"
+        )
+    )
