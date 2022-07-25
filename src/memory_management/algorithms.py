@@ -61,6 +61,29 @@ def best_fit(blockSize: int, blockLength: int, processSize: int, processLength: 
     memory(blockSize)
 
 
+def next_fit(blockSize: int, blockLength, processSize, processLength):
+    allocation = [-1] * processLength
+    j = 0
+    t = blockLength - 1
+    for i in range(processLength):
+        while j < blockLength:
+            if blockSize[j] >= processSize[i]:
+                allocation[i] = j
+                blockSize[j] -= processSize[i]
+
+                t = (j - 1) % blockLength
+                break
+            if t == j:
+                t = (j - 1) % blockLength
+                break
+
+            j = (j + 1) % blockLength
+
+    print("Next-fit")
+    final_allocation(processLength, processSize, allocation)
+    memory(blockSize)
+
+
 def final_allocation(processLength: int, processSize: int, allocation: int):
     result = []
     index = []
