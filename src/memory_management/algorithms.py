@@ -2,12 +2,12 @@ from tabulate import tabulate
 from data import data
 
 
-def worst_fit(blockSize: int, blockLenth: int, processSize: int, processLength: int):
+def worst_fit(blockSize: int, blockLength: int, processSize: int, processLength: int):
     allocation = [-1] * processLength
 
     for i in range(processLength):
         worstId = -1
-        for j in range(blockLenth):
+        for j in range(blockLength):
             if blockSize[j] >= processSize[i]:
                 if worstId == -1:
                     worstId = j
